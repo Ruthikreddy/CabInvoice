@@ -1,6 +1,7 @@
 using NUnit.Framework;
-using CabInvioceGenerater;
 using CabInvoiceGenerator;
+using CabInvioceGenerater;
+
 namespace CabInvoiceGeneratorTest
 {
     public class Tests
@@ -35,6 +36,22 @@ namespace CabInvoiceGeneratorTest
             invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
             InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
             Assert.AreEqual(expected, summary.totalFare);
+        }
+        [Test]
+        public void GivenUserIdWith5Rides_ShouldReturnEnhancedInvoiceSummary()
+        {
+            Ride[] rides =
+            {
+                new Ride(1.0, 1),
+                new Ride(2.0, 2),
+                new Ride(2.0, 2),
+                new Ride(4.0, 4),
+                new Ride(3.0, 3)
+            };
+            InvoiceSummary expected = new InvoiceSummary(5, 132);
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            InvoiceSummary summary = invoiceGenerator.CalculateFare(rides);
+            Assert.AreEqual(summary, expected);
         }
     }
 }
