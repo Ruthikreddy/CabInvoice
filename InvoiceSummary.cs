@@ -8,7 +8,7 @@ namespace CabInvioceGenerater
     {
         // Variables.
         private int numberOfRides;
-        private double totalFare;
+        public double totalFare;
         private double averageFare;
         /// <summary>
         /// Parameter Constructor For Setting Data.
